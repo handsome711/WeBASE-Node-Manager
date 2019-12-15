@@ -41,7 +41,7 @@ public class ChainController {
     private ChainService chainService;
 
     @GetMapping(value = "/mointorInfo/{frontId}")
-    public BaseResponse getChainMoinntorInfo(@PathVariable("frontId") Integer frontId,
+    public BaseResponse getChainMointorInfo(@PathVariable("frontId") Integer frontId,
         @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime beginDate,
         @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime endDate,
         @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime contrastBeginDate,

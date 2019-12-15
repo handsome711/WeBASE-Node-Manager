@@ -76,6 +76,7 @@ public class FrontRestTools {
     public static final String URI_CONTRACT_SENDABI = "contract/abiInfo";
     public static final String URI_SEND_TRANSACTION = "trans/handle";
     public static final String URI_CHAIN = "chain";
+    public static final String URI_SITUATION = "situation";
 
     public static final String URI_PERMISSION = "permission";
     public static final String URI_PERMISSION_FULL_LIST = "permission/full";
