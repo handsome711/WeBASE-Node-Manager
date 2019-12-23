@@ -70,6 +70,7 @@ public class FrontRestTools {
     public static final String URI_GET_SEALER_LIST = "web3/sealerList";
     public static final String URI_GET_OBSERVER_LIST = "web3/observerList";
     public static final String FRONT_PERFORMANCE_RATIO = "performance";
+    public static final String FRONT_PROCESS_PERFORMANCE_RATIO = "process";
     public static final String FRONT_PERFORMANCE_CONFIG = "performance/config";
     public static final String URI_KEY_PAIR = "privateKey?useAes=%1b";
     public static final String URI_CONTRACT_DEPLOY = "contract/deploy";

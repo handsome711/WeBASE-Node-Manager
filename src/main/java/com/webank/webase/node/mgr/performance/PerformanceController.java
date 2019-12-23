@@ -75,6 +75,38 @@ public class PerformanceController {
     }
 
     /**
+     * get ratio of performance.
+     */
+    @GetMapping(value = "/process/{frontId}")
+    public BaseResponse getProcessPerformanceRatio(@PathVariable("frontId") Integer frontId,
+           @RequestParam("beginDate") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime beginDate,
+           @RequestParam("endDate") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime endDate,
+           @RequestParam(value = "contrastBeginDate", required = false)
+           @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime contrastBeginDate,
+           @RequestParam(value = "contrastEndDate", required = false)
+           @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime contrastEndDate,
+           @RequestParam(value = "gap", required = false, defaultValue = "1") int gap)
+            throws NodeMgrException {
+
+        Instant startTime = Instant.now();
+        BaseResponse response = new BaseResponse(ConstantCode.SUCCESS);
+        log.info(
+                "start getPerformanceRatio. startTime:{} frontId:{} beginDate:{}"
+                        + " endDate:{} contrastBeginDate:{} contrastEndDate:{} gap:{}",
+                startTime.toEpochMilli(), frontId, beginDate, endDate, contrastBeginDate,
+                contrastEndDate, gap);
+
+        Object rspObj = performanceService
+                .getProcessPerformanceRatio(frontId, beginDate, endDate, contrastBeginDate, contrastEndDate,
+                        gap);
+        response.setData(rspObj);
+        log.info("end getPerformanceRatio. useTime:{} response:{}",
+                Duration.between(startTime, Instant.now()).toMillis(), JSON.toJSONString(response));
+
+        return response;
+    }
+
+    /**
      * get config of performance.
      */
     @GetMapping(value = "/config/{frontId}")
