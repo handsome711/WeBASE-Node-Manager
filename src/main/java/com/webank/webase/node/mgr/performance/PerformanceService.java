@@ -79,41 +79,41 @@ public class PerformanceService {
         return rspObj;
     }
 
-    /**
-     * get ratio of performance.
-     */
-    public Object getProcessPerformanceRatio(Integer frontId, LocalDateTime beginDate,
-                                             LocalDateTime endDate, LocalDateTime contrastBeginDate,
-                                             LocalDateTime contrastEndDate, int gap) {
-        log.debug(
-                "start getProcessPerformanceRatio.  frontId:{} beginDate:{} endDate:{}"
-                        + " contrastBeginDate:{} contrastEndDate:{} gap:{}",
-                frontId, beginDate, endDate, contrastBeginDate, contrastEndDate, gap);
-
-        List<String> nameList = Arrays
-                .asList("beginDate", "endDate", "contrastBeginDate", "contrastEndDate", "gap");
-        List<Object> valueList = Arrays
-                .asList(beginDate, endDate, contrastBeginDate, contrastEndDate, gap);
-
-        // request param to str
-        String urlParam = NodeMgrTools.convertUrlParam(nameList, valueList);
-
-        // query by front Id
-        TbFront tbFront = frontService.getById(frontId);
-        if (tbFront == null) {
-            throw new NodeMgrException(ConstantCode.INVALID_FRONT_ID);
-        }
-
-        // request url
-        String url = String.format(cproperties.getFrontUrl(), tbFront.getFrontIp(), tbFront.getFrontPort(),
-                FRONT_PROCESS_PERFORMANCE_RATIO);
-        url = url + "?" + urlParam;
-        log.info("getPerformanceRatio request url:{}", url);
-
-        Object rspObj = genericRestTemplate.getForObject(url, Object.class);
-        log.debug("end getPerformanceRatio. rspObj:{}", JSON.toJSONString(rspObj));
-        return rspObj;
-    }
+//    /**
+//     * get ratio of performance.
+//     */
+//    public Object getProcessPerformanceRatio(Integer frontId, LocalDateTime beginDate,
+//                                             LocalDateTime endDate, LocalDateTime contrastBeginDate,
+//                                             LocalDateTime contrastEndDate, int gap) {
+//        log.debug(
+//                "start getProcessPerformanceRatio.  frontId:{} beginDate:{} endDate:{}"
+//                        + " contrastBeginDate:{} contrastEndDate:{} gap:{}",
+//                frontId, beginDate, endDate, contrastBeginDate, contrastEndDate, gap);
+//
+//        List<String> nameList = Arrays
+//                .asList("beginDate", "endDate", "contrastBeginDate", "contrastEndDate", "gap");
+//        List<Object> valueList = Arrays
+//                .asList(beginDate, endDate, contrastBeginDate, contrastEndDate, gap);
+//
+//        // request param to str
+//        String urlParam = NodeMgrTools.convertUrlParam(nameList, valueList);
+//
+//        // query by front Id
+//        TbFront tbFront = frontService.getById(frontId);
+//        if (tbFront == null) {
+//            throw new NodeMgrException(ConstantCode.INVALID_FRONT_ID);
+//        }
+//
+//        // request url
+//        String url = String.format(cproperties.getFrontUrl(), tbFront.getFrontIp(), tbFront.getFrontPort(),
+//                FRONT_PROCESS_PERFORMANCE_RATIO);
+//        url = url + "?" + urlParam;
+//        log.info("getPerformanceRatio request url:{}", url);
+//
+//        Object rspObj = genericRestTemplate.getForObject(url, Object.class);
+//        log.debug("end getPerformanceRatio. rspObj:{}", JSON.toJSONString(rspObj));
+//        return rspObj;
+//    }
 
     /**
      * get config of performance.
