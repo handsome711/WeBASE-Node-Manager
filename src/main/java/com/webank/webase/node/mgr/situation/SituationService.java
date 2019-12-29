@@ -67,7 +67,7 @@ public class SituationService {
         String url = String
             .format(cproperties.getFrontUrl(), tbFront.getFrontIp(), tbFront.getFrontPort(),
                     URI_SITUATION);
-        url = url + "?" + situationUrlParam;
+//        url = url + "?" + situationUrlParam;
         log.info("getSituationMonitorInfo request url:{}", url);
 
         Object rspObj = genericRestTemplate.getForObject(url, Object.class);
